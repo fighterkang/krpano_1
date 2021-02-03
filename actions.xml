@@ -1,0 +1,87 @@
+<krpano>
+	<skin_settings maps="true" maps_type="google" maps_bing_api_key="" maps_google_api_key="" maps_zoombuttons="false" maps_loadonfirstuse="true" gyro="true" gyro_keeplookingdirection="false" webvr="true" webvr_keeplookingdirection="true" webvr_prev_next_hotspots="true" autotour="false" littleplanetintro="false" followmousecontrol="false" title="true" thumbs="true" thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160" thumbs_opened="true" thumbs_text="false" thumbs_dragging="true" thumbs_onhoverscrolling="false" thumbs_scrollbuttons="false" thumbs_scrollindicator="false" thumbs_loop="false" tooltips_buttons="false" tooltips_thumbs="false" tooltips_hotspots="false" tooltips_mapspots="false" deeplinking="false" loadscene_flags="MERGE" loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)" loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)" loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)" loadingtext="加载中..." layout_width="100%" layout_maxwidth="814" controlbar_width="-24" controlbar_height="40" controlbar_offset="20" controlbar_offset_closed="-40" controlbar_overlap.no-fractionalscaling="10" controlbar_overlap.fractionalscaling="0" design_skin_images="vtourskin.png" design_bgcolor="0x2D3E50" design_bgalpha="0.8" design_bgborder="0" design_bgroundedge="1" design_bgshadow="0 4 10 0x000000 0.3" design_thumbborder_bgborder="3 0xFFFFFF 1.0" design_thumbborder_padding="2" design_thumbborder_bgroundedge="0" design_text_css="color:#FFFFFF; font-family:Arial;" design_text_shadow="1" />
+	<autorotate enabled="true" waittime="5.0" speed="3.0" horizon="0.0" tofov="120.0" />
+<!--	<action name="control_startup" autorun="onstart">-->
+<!--		set(control.mouse, drag);-->
+<!--		set(control.touch, drag);-->
+<!--	</action>-->
+	<!-- 隐藏控制栏 -->
+	<action name="hide_vtourskin_all" autorun="onstart">
+		<!-- skin_hideskin();
+		skin_hideskin(instant);
+		delayedcall(0.45, skin_hideskin()); -->
+		set(events[skin_events].name, null);
+	</action>
+
+	<!-- 拖拽 -->
+	<action name="draghotspot">
+	spheretoscreen(ath, atv, hotspotcenterx, hotspotcentery, calc(mouse.stagex LT stagewidth/2 ? 'l' : 'r'));
+	sub(drag_adjustx, mouse.stagex, hotspotcenterx);
+	sub(drag_adjusty, mouse.stagey, hotspotcentery);
+	asyncloop(pressed,
+		sub(dx, mouse.stagex, drag_adjustx);
+		sub(dy, mouse.stagey, drag_adjusty);
+		screentosphere(dx, dy, ath, atv);
+		js(log(dragging:hotspot_position,get(ath),get(atv),get(view.fov)))
+	  );
+	</action>
+	<action name="draglayer">
+		copy(drag_currentx, x);
+		copy(drag_currenty, y);
+		copy(drag_stagex, mouse.stagex);
+		copy(drag_stagey, mouse.stagey);
+		indexoftxt(align_contains_right, get(align), 'right');
+		indexoftxt(align_contains_bottom, get(align), 'bottom');
+		calc(drag_align_x, align_contains_right GE 0 ? -1 : +1);
+		calc(drag_align_y, align_contains_bottom GE 0 ? -1 : +1);
+		asyncloop(pressed,
+			calc(x, drag_currentx + (mouse.stagex - drag_stagex)*drag_align_x);
+			calc(y, drag_currenty + (mouse.stagey - drag_stagey)*drag_align_y);
+		  );
+	</action>
+	<action name="returnHotSpotData">
+    js(log(hotspot_position,get(ath),get(atv),get(view.fov),get(scene)))
+	</action>
+	<action name="looktoHotSpotx">
+			lookto(get(ath),get(atv),get(view.fov),smooth(100,40,50));
+	</action>
+	<action name="looktoLayer">
+			trace(get(x),y);
+			lookto(get(x),get(y),get(view.fov),smooth(100,40,50));
+	</action>
+	<action name="check_mode">
+		<!-- 
+			editable 编辑模式，hotspot/layer可以调整位置，但不跳转场景，会聚焦到移动后的视角
+			visible 不能移动hotspot/layer,点击会跳转场景 -->
+			jsget(vmode,'window.vmode');
+			if(vmode === 'editable',
+			for(set(i,0),i LT hotspot.count,inc(i),
+						 set(hotspot[get(i)].ondown,draghotspot());
+						 set(hotspot[get(i)].onup,looktoHotSpotx());
+						 set(autorotate.enabled, false);
+				),
+				for(set(i,0),i LT hotspot.count,inc(i),
+						 set(hotspot[get(i)].ondown,js(log(11)));
+						 set(hotspot[get(i)].onup,returnHotSpotData());
+						 set(autorotate.enabled, true);
+				)
+				)
+
+	</action>
+	
+
+	<action name="changeScene">
+		loadscene(%1, null, MERGE, BLEND(1));
+		js(console.log(%1));
+	</action>
+
+	<!-- 初始加载第一个scene -->
+	<action name="startup">
+		if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[%1].name); );
+		loadscene(get(startscene), null, MERGE);
+		if(startactions !== null, startactions() );
+	</action>
+
+
+
+</krpano>

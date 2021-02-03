@@ -1,0 +1,213 @@
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+body,
+button,
+input,
+select,
+textarea {
+  font: 12px/1.5 'Microsoft YaHei', arial, tahoma, sans-serif;
+}
+a {
+  color: #695e5e;
+}
+
+.divRight {
+  margin-left: 280px;
+}
+.m-head {
+  height: 25px;
+  padding-top: 10px;
+  border-bottom: 1px dotted #646977;
+  margin-bottom: 10px;
+}
+
+.m-head h2 {
+  font-weight: bold;
+  font-size: 16px;
+  float: left;
+}
+
+.m-head .headCon {
+  margin: 2px 0 0 10px;
+  display: inline;
+}
+
+.tabNav {
+  padding-left: 10px;
+  border-bottom: 1px solid #a4aeb9;
+}
+
+.tab-item {
+  float: left;
+  height: 39px;
+  margin-right: 10px;
+  line-height: 39px;
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
+  text-align: center;
+  border: 1px solid #a4aeb9;
+  border-bottom: 0 !important;
+  position: relative;
+  top: 1px;
+  border-radius: 5px 5px 0 0;
+}
+.m-tab-gray .tab-item {
+  background-color: #a4aeb9;
+  border-color: #a4aeb9;
+}
+.m-tab-gray .tab-item a {
+  color: #fff;
+}
+
+.tab-item a {
+  padding: 0 17px;
+  display: block;
+  color: #695e5e;
+}
+
+.tab-item.active {
+  border-top: 2px solid #f7b027;
+}
+
+.tabCon {
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #a4aeb9;
+  border-top: 0;
+  padding: 10px;
+}
+
+.divLeft {
+  float: left;
+  width: 276px;
+  padding: 10px 20px 0 10px;
+  height: 750px;
+  box-sizing: border-box;
+  border: 1px dotted #646977;
+}
+
+.u-linedotted {
+  border-bottom: 1px dotted #676769;
+}
+.pb10 {
+  padding-bottom: 10px;
+}
+.mt10 {
+  margin-top: 10px;
+}
+.radio {
+  width: 13px;
+  height: 13px;
+  overflow: hidden;
+  vertical-align: middle;
+  margin: -4px 5px 0 0;
+}
+.btn-boxshadow {
+  box-shadow: rgba(0, 0, 0, 1) 1px 1px 5px;
+}
+.u-btn {
+  font-family: '\5B8B\4F53';
+  display: inline-block;
+  color: #fff;
+  background-color: #4a89dc;
+  cursor: pointer;
+  outline: 0;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 3px;
+}
+.u-btn-mini {
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+  font-weight: normal;
+}
+.u-btn-small {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.pd10 {
+  padding-bottom: 10px;
+}
+.mt10 {
+  margin-top: 10px;
+}
+.m-tab-mini .tab-item {
+  height: 22px;
+  line-height: 22px;
+  font-size: 12px;
+}
+.m-tab-radius .tab-item {
+  border-radius: 5px 5px 0 0;
+}
+.m-tab-gray .tab-current {
+  background-color: #fff;
+  border-color: #c6cdd3;
+  border-width: 1px;
+}
+.m-tab-gray .tab-con {
+  border: 1px solid;
+  border-color: #c6cdd3;
+}
+.m-tab-gray .tab-current a {
+  color: #695e5e;
+}
+.sceneedit-bottomspace {
+  padding-bottom: 60px;
+}
+.vr-sceneedit .sceneedit-handle .select {
+  width: 230px;
+}
+.select {
+  margin: 5px;
+  padding: 0px;
+  width: 230px;
+}
+.m-tab-gray .tab-current {
+  background-color: #fff;
+  border-color: #c6cdd3;
+  border-width: 1px;
+}
+.input#txtName {
+  border: 1px solid #c6cdd3;
+  height: 18px;
+  line-height: 20px;
+  padding: 0 3px;
+  vertical-align: middle;
+  width: 222px;
+  margin: 0 5px;
+}
+.vr-sceneedit .sceneedit-switch .u-btn {
+  display: block;
+}
+.pl10 {
+  padding-left: 10px;
+}
+
+.pr10 {
+  padding-right: 10px;
+}
+.mt15 {
+  margin-top: 15px;
+}
+.mb10 {
+  margin-bottom: 10px;
+}
+.sceneedit-switch a {
+  display: block;
+}
+.sceneedit-anchor {
+  position: absolute;
+  bottom: 10px;
+  width: 240px;
+}
+.sceneedit-handle {
+  margin-left: 4px;
+}

@@ -1,0 +1,82 @@
+﻿<krpano version="1.20.7" title="Virtual Tour">
+
+	<include url="skin/vtourskin.xml" />
+	<include url="actions.xml" />
+	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+
+	<scene name="scene_pano" title="场景1" onstart="" thumburl="panos/pano.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/pano.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/pano.tiles/pano_%s.jpg" />
+			<!-- https://dealerzts3.autohome.com.cn/dealervr0/0/0/0_1/l/l1/1/l1_l_1_2.jpg -->
+			<!-- <cube url="https://dealerzts3.autohome.com.cn/dealervr0/0/0/0_1/%s/l1/%v/l1_%s_%v_%h.jpg"/> -->
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="4.997" atv="27.870" onup="returnHotSpotData(ath,atv)" linkedscene="scene_pano2"/>
+
+		<hotspot name="spot1_1" style="skin_hotspotstyle" ath="14.997" atv="27.870" onup="returnHotSpotData(ath,atv)" linkedscene="scene_pano2"/>
+	</scene>
+
+
+	<scene name="scene_pano2" title="场景2" onstart="" thumburl="panos/pano2.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/pano2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/pano2.tiles/pano_%s.jpg" />
+			<!-- <cube url="https://dealerzts3.autohome.com.cn/dealervr0/0/0/0_1/%s/l1/%v/l1_%s_%v_2.jpg"/> -->
+		</image>
+		<hotspot name="spot1spot1" style="skin_hotspotstyle" ath="108.922" atv="36.687" linkedscene="scene_snow" onup="returnHotSpotData(ath,atv)"/>
+
+	</scene>
+
+	<scene name="scene_snow" title="场景3" onstart="" thumburl="panos/snow.tiles/thumb.jpg" lat="49.90004500" lng="2.30615583" heading="0.0" test="test1">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="range" vlookatmin="-61.229" vlookatmax="61.229" />
+
+		<preview url="panos/snow.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/snow.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="19.920" atv="8.979" linkedscene="scene_sun" onup="returnHotSpotData(ath,atv)"/>
+
+	</scene>
+
+	<scene name="scene_sun" title="场景4" onstart="" thumburl="panos/sun.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/sun.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/sun.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-179.282" atv="7.636" linkedscene="scene_yard1" onup="returnHotSpotData(ath,atv)"/>
+
+	</scene>
+
+	<scene name="scene_yard1" title="场景5" onstart="" thumburl="panos/yard1.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/yard1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/yard1.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-68.500" atv="23.945" linkedscene="scene_pano" onup="returnHotSpotData(ath,atv)"/>
+	</scene>
+
+	<!-- html layer start-->
+	<!-- <style name="icon_txt" textshadow="1" textshadowrange="6.0" textshadowangle="90" textshadowcolor="0x000000" css="text-align:center; color:#FFFFFF;font-family:Microsoft Yahei; font-size:16px;"/>
+	<layer name="icon-bar" type="container" keep="true" visible="true" bgcolor="0x000000" bgalpha="0" height="80" width="100%">
+		<layer name="skin_btn_hqdj_txt1" style="icon_txt" align="centerleft" url="./plugins/textfield.swf" x="0" y="52" html="全部配套" background="false" ondown="draglayer()" onclick="toggle_hotspots_all()"/>
+	</layer> -->
+	<!-- html layer end-->
+</krpano>

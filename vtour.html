@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{{base.name}}}-太平洋车商家后台</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="Author" content="xieyongshuang_gz designer_gz">
+    <meta charset="utf8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta content="always" name="referrer">
+    <meta http-equiv="Cache-Control" content="no-transform "/>
+    <link rel="stylesheet" href="//price.pcauto.com.cn/dealer/css/jquery-ui-1.8.4.custom.css" type="text/css"
+          media="all"/>
+    <link href="//js.3conline.com/pcautonew2/pc/2017/cheshangjia/css/yingxiao.css?t=1" rel="stylesheet">
+    <link href="tour.css" rel="stylesheet">
+    <script src="//js.3conline.com/min/temp/v1/lib-jquery-1.5.min.js"></script>
+    <script type="text/javascript" src="html2canvas.min.js"></script>
+    <script src="tour.js"></script>
+</head>
+
+<body>
+<div>
+    <div id="wrap-con" style="margin-top:30px;padding:10px 80px 10px 30px;position:absolute;right:-300px;bottom:-300px;display:inline-block;border-radius:4px;background:rgba(2,2,2,0.3);">
+        <img src="cu2.png" alt="促销" width="20px" height="30px" style="position: absolute;left:4px;top:50%;transform: translateY(-70%)">
+        <p style="height:50px;width:174px;color:#fff;font-size:16px;">
+            2020款天籁科技上市！优选0息开好车！
+        </p>
+        <button style="position:absolute;right:10px;top:50%;transform: translateY(-50%);background: blue;color: #fff;border:none;border-radius:4px;font-size:18px;padding:2px 4px;">
+            询底价
+        </button>
+    </div>
+    <div class="m-head">
+        <h2>编辑展厅</h2>
+        <p class="fl headCon">
+            如您的展厅空白未出现全景照片，请更换IE10以上、Chrome（谷歌） 50以上浏览器进行编辑， 同时建议使用Windows 7 及以上版本操作系统。
+        </p>
+    </div>
+    <div>
+        <ul class="tabNav clearfix">
+            <li class="tab-item active" id="scene0" onclick="toggleScene(0)"><a href="javascript:0;">场景1</a></li>
+            <li class="tab-item" id="scene1" onclick="toggleScene(1)"><a href="javascript:0;">场景2</a></li>
+            <li class="tab-item" id="scene2" onclick="toggleScene(2)"><a href="javascript:0;">场景3</a></li>
+        </ul>
+        <a href="#" class="u-btn" style="">展厅审核</a>
+        <a href="#" class="u-btn" style="" onclick="toggleMode()">test: toggleMode</a>
+        <div class="tabCon clearfix">
+            <div class="divLeft">
+                <div class="clearfix u-linedotted pd10">
+                    <div class="fl">
+                        <label>
+                            <input type="radio" class="radio" id="CheckFirstScene">
+                            设为初始场景
+                        </label>
+                    </div>
+                    <div class="fr">
+                        <a class="u-btn u-btn-mini u-btn-small btn-boxshadow" href="javascript:0;" onclick="addALayer()">设置当前为第一视角</a>
+                    </div>
+                </div>
+                <div class="clearfix u-linedotted pd10 mt10">
+                    <div class="fl">
+                        场景名称：<span id="showDispalyName"></span>
+                    </div>
+                    <div class="fr">
+                        <a href="javacript:0;">修改</a>
+                    </div>
+                </div>
+                <span style="color:red">*设置必填：场景切换镜头、车型信息展示牌</span>
+                <div class="m-tab m-tab-mini m-tab-gray mt10">
+                    <ul class="tab-nav clearfix">
+                        <li class="tab-item tab-current" id="addTab" onclick="toggleTab('addTab')"><a
+                                href="javascript:void(0)?menuSourceType=">添加区</a></li>
+                        <li class="tab-item" id="editTab" onclick="toggleTab('editTab')"><a
+                                href="javascript:void(0)?menuSourceType=">编辑区</a></li>
+                    </ul>
+                    <div class="tab-con">
+                        <div class="tab-conitem sceneedit-bottomspace">
+                            <!-- 添加区 -->
+                            <div class="sceneedit-handle" id="addTabBody">
+                                <select id="dropdownhotspot" class="select mb10">
+                                    <option value="0">热点类型234</option>
+                                    <option value="2">车型信息展示牌</option>
+                                    <option value="1">场景切换箭头</option>
+                                    <option value="4">虚拟展车</option>
+                                </select>
+                                <input type="text" id="txtName" class="input mb10"
+                                       onchange="pageFunc.changeAnthorName(this);"
+                                       placeholder="名称(不能以数字开头)" style="display: inline-block;">
+                                <select id="sltNextScene" class="select mb10" style="">
+                                    <option value="0">目标场景</option>
+                                    <option value="45421" name="scene_1">全景图1</option>
+                                    <option value="45433" name="scene_2">全景图2</option>
+                                    <option value="45446" name="scene_3">全景图3</option>
+                                    <option value="45462" name="scene_4">全景图4</option>
+                                    <option value="45478" name="scene_5">全景图5</option>
+                                    <option value="45485" name="scene_6">全景图6</option>
+                                    <option value="159517" name="scene_7">全景图7</option>
+                                    <option value="159516" name="scene_8">全景图8</option>
+                                    <option value="159518" name="scene_9">全景图9</option>
+                                </select>
+                                <div class="sceneedit-switch mt15 pl10 pr10">
+                                    <a class="u-btn u-btn-mini u-btn-small btn-boxshadow mb10"
+                                       href="javascript:void(0)?menuSourceType="
+                                       id="AddButton" onclick="pageFunc.addanchor();">添 加</a>
+                                    <a class="u-btn u-btn-mini u-btn-small btn-boxshadow mb10"
+                                       href="javascript:void(0)?menuSourceType="
+                                       id="SaveButton" onclick="pageFunc.saveAddAnchor();">保 存</a>
+                                </div>
+                                <div class="sceneedit-anchor" id="divAnchorInfo" style="display: block;">
+                                    <h3 class="mb10">锚点信息</h3>
+                                    <table>
+                                        <tbody>
+                                        <tr>
+                                            <td align="center" id="SpotName">当前未选中锚点</td>
+                                            <td align="right"><a href="javascript:void(0)?menuSourceType="
+                                                                 onclick="pageFunc.deleteSpot()"
+                                                                 class="u-btn u-btn-mini u-btn-small u-btn-disabled">放
+                                                弃</a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- 编辑区 -->
+                            <div class="sceneedit-handle" id="editTabBody" style="display: none;">
+                                <select id="dropdownhotspot" class="select mb10">
+                                    <option value="0">热点类型</option>
+                                    <option value="2">车型信息展示牌</option>
+                                    <option value="1">场景切换箭头</option>
+                                    <option value="4">虚拟展车</option>
+                                </select>
+                                <select id="selectName" class="select mb10" style="">
+                                    <option value="0">选择名称</option>
+                                    <option value="196298">啊</option>
+                                    <option value="198765">q</option>
+                                    <option value="741098">楼兰</option>
+                                    <option value="741970">蓝鸟</option>
+                                    <option value="741971">蓝鸟2</option>
+                                </select>
+                                <select id="sltSeries" class="select mb10" style="">
+                                    <option value="0">选择车系</option>
+                                    <option value="4305">劲客</option>
+                                    <option value="448">轩逸</option>
+                                    <option value="425">骐达TIIDA</option>
+                                    <option value="3817">蓝鸟</option>
+                                    <option value="4691">途达</option>
+                                    <option value="634">天籁</option>
+                                    <option value="656">奇骏</option>
+                                    <option value="4766">轩逸·纯电</option>
+                                    <option value="564">逍客</option>
+                                    <option value="2381">楼兰</option>
+                                    <option value="64">阳光</option>
+                                    <option value="522">骊威</option>
+
+                                </select>
+                                <select id="sltSpec" class="select mb10" style="">
+                                    <option value="0">选择车型</option>
+                                    <option value="42398">2020款 2.0L XE 时尚版</option>
+                                    <option value="42399">2020款 2.0L XL 舒适版</option>
+                                    <option value="42400">2020款 2.0L XL Upper 智行版</option>
+                                    <option selected="selected" value="42402">2020款 2.0T XL 智领版</option>
+                                    <option value="42403">2020款 2.0T XL Upper AD1 智享领航版</option>
+                                    <option value="42404">2020款 2.0T XV AD1 智尊领航版</option>
+                                </select>
+                                <div class="sceneedit-handle" id="salesinfodiv" style="">
+                                    <label class="f-left">促销信息<span></span></label>
+
+                                    <textarea name="salesInfo" id="salesInfo" rows="5" style="width:88%" maxlength="20"
+                                              class="mb10"></textarea>
+                                </div>
+                                <select id="sltNextScene" class="select mb10" style="">
+                                    <option value="0">目标场景</option>
+                                    <option value="45421" name="scene_1">全景图1</option>
+                                    <option value="45433" name="scene_2">全景图2</option>
+                                    <option value="45446" name="scene_3">全景图3</option>
+                                    <option value="45462" name="scene_4">全景图4</option>
+                                    <option value="45478" name="scene_5">全景图5</option>
+                                    <option value="45485" name="scene_6">全景图6</option>
+                                    <option value="159517" name="scene_7">全景图7</option>
+                                    <option value="159516" name="scene_8">全景图8</option>
+                                    <option value="159518" name="scene_9">全景图9</option>
+                                </select>
+                                <div class="sceneedit-switch mt15 pl10 pr10">
+                                    <a class="u-btn u-btn-mini u-btn-small btn-boxshadow mb10"
+                                       href="javascript:void(0)?menuSourceType="
+                                       id="AddButton" onclick="pageFunc.addanchor();">保 存</a>
+                                    <a class="u-btn u-btn-mini u-btn-small btn-boxshadow mb10"
+                                       href="javascript:void(0)?menuSourceType="
+                                       id="SaveButton" onclick="pageFunc.saveAddAnchor();">删 除</a>
+                                </div>
+                                <div style="display: none;">
+                                    <div class="sceneedit-handleother clearfix" id="divAddIcon" style="">
+                                        <label class="f-left" style="display:none"><input type="checkbox"
+                                                                                          class="checkbox"
+                                                                                          id="ckAddIcon">添加icon</label>
+                                        <select class="select f-right" id="selectIconType" disabled="disabled">
+                                            <option value="0">车型信息展示牌</option>
+                                            <option value="1">热销</option>
+                                            <option value="2">直降</option>
+                                            <option value="3">团购</option>
+                                            <option value="4">爆款</option>
+                                        </select>
+                                    </div>
+                                    <div class="sceneedit-handle" id="veBoothDiv" style="">
+                                        <select class="select mb10" id="sltCarPosition">
+                                            <option value="0">选择展位</option>
+                                            <option value="1">主展位</option>
+                                            <option value="2">展位1</option>
+                                            <option value="3">展位2</option>
+                                            <option value="4">展位3</option>
+                                            <option value="5">展位4</option>
+                                            <option value="6">展位5</option>
+                                        </select>
+                                        <select class="select mb10" id="sltVeSeries">
+                                            <option value="0">选择车系</option>
+                                            <option value="448">轩逸</option>
+                                            <option value="656">奇骏</option>
+                                            <option value="4305">劲客</option>
+                                            <option value="4691">途达</option>
+                                            <option value="564">逍客</option>
+                                            <option value="425">骐达TIIDA</option>
+                                            <option value="3817">蓝鸟</option>
+                                            <option value="634">天籁</option>
+                                            <option value="2381">楼兰</option>
+                                            <option value="4766">轩逸·纯电</option>
+
+                                        </select>
+                                        <select class="select mb10" id="sltVeSpec">
+                                            <option value="0">选择车型</option>
+                                        </select>
+                                        <div id="sltSpecInfoDiv" style="">
+                                            <dl class="m-control">
+                                                <dt>默认颜色：</dt>
+                                                <dd class="fn-clear" id="sltVeCarColor"></dd>
+                                            </dl>
+                                            <div class="mb10">
+                                                <p class="mb5">展车角度</p>
+                                                <div class="txt-center">
+                                                    <div class="slider slider-horizontal" id="ex1Slider">
+                                                        <div class="slider-track">
+                                                            <div class="slider-selection"
+                                                                 style="left: 0%; width: 96.5517%;"></div>
+                                                            <div class="slider-handle min-slider-handle round"
+                                                                 tabindex="0"
+                                                                 style="left: 96.5517%;">
+                                                            </div>
+                                                            <div class="slider-handle max-slider-handle round hide"
+                                                                 tabindex="0" style="left: 0%;">
+                                                            </div>
+                                                            <span class="slider-niminum">1</span><span
+                                                                class="slider-maxnum">30</span>
+                                                        </div>
+                                                        <div class="tooltip tooltip-main top"
+                                                             style="left: 96.5517%; margin-left: 0px;">
+                                                            <div class="tooltip-arrow"></div>
+                                                            <div class="tooltip-inner">29</div>
+                                                        </div>
+                                                        <div class="tooltip tooltip-min top">
+                                                            <div class="tooltip-arrow"></div>
+                                                            <div class="tooltip-inner"></div>
+                                                        </div>
+                                                        <div class="tooltip tooltip-max top" style="">
+                                                            <div class="tooltip-arrow"></div>
+                                                            <div class="tooltip-inner"></div>
+                                                        </div>
+                                                    </div>
+                                                    <input id="angle" data-slider-id="ex1Slider" type="text"
+                                                           data="value: '29'" value="29"
+                                                           style="">
+                                                </div>
+                                            </div>
+                                            <div class="mb10">
+                                                <p class="mb5">展车尺寸</p>
+                                                <div class="txt-center">
+                                                    <div class="slider slider-horizontal" id="ex1Slider">
+                                                        <div class="slider-track">
+                                                            <div class="slider-selection"
+                                                                 style="left: 0%; width: 28.5714%;"></div>
+                                                            <div class="slider-handle min-slider-handle round"
+                                                                 tabindex="0"
+                                                                 style="left: 28.5714%;">
+                                                            </div>
+                                                            <div class="slider-handle max-slider-handle round hide"
+                                                                 tabindex="0" style="left: 0%;">
+                                                            </div>
+                                                            <span class="slider-niminum">0.8</span><span
+                                                                class="slider-maxnum">1.5</span>
+                                                        </div>
+                                                        <div class="tooltip tooltip-main top"
+                                                             style="left: 28.5714%; margin-left: 0px;">
+                                                            <div class="tooltip-arrow"></div>
+                                                            <div class="tooltip-inner">1</div>
+                                                        </div>
+                                                        <div class="tooltip tooltip-min top">
+                                                            <div class="tooltip-arrow"></div>
+                                                            <div class="tooltip-inner"></div>
+                                                        </div>
+                                                        <div class="tooltip tooltip-max top">
+                                                            <div class="tooltip-arrow"></div>
+                                                            <div class="tooltip-inner"></div>
+                                                        </div>
+                                                    </div>
+                                                    <input id="measure" data-slider-id="ex1Slider" type="text"
+                                                           data="value: '1'" value="1"
+                                                           style="">
+                                                </div>
+                                            </div>
+                                            <div class="mb10">
+                                                <p class="mb10">展车预览</p>
+                                                <div class="t_carpreview">
+                                                    <div class="carpreview-wrap" id="previewImg"
+                                                         style="width: 180px; height: 120px; margin-left: -90px; margin-top: -60px;">
+                                                        <img id="imgSpecImg" src="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divRight">
+                <div id="pano" style="position:relative;width:100%;min-width:500px;height:750px;">
+                    <!-- <div
+                        style="position: absolute;right:0;top:0;width:300px;height:300px;background-color: blue;opacity: .3; z-index: 999;">
+                        输入框
+                        <input type="text">
+                      </div> -->
+                    <noscript>
+                        <table style="width:100%;height:100%;">
+                            <tr style="vertical-align:middle;">
+                                <td>
+                                    <div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </noscript>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    //初始化krpano
+    embedpano({
+        swf: "tour.swf",
+        xml: "tour.xml",
+        target: "pano",
+        html5: "auto",
+        mobilescale: 1.0,
+        passQueryParameters: true,
+        onready: krpano_onready_callback
+    });
+
+    function krpano_onready_callback(krpano_interface) {
+        krpano = krpano_interface;
+    }
+
+    function krp(str) {
+        krpano.call(str);
+    }
+</script>
+<script>
+    var sceneNameArr = ['scene_pano', 'scene_pano2', 'scene_snow'];
+    //新增图文layer
+    function addALayer() {
+        var canvas = document.createElement('canvas');
+        var oDiv = document.querySelector('#wrap-con');
+        var _canvas = document.querySelector('#wrap-con');
+        html2canvas(oDiv, {
+            canvas: canvas
+        }).then(function (canvas) {
+            let url = canvas.toDataURL('image/jpg');
+            console.log(typeof(url))
+            // var pHtml = "<img src='" + url + "' alt='二维码图片' width='280px'>";
+            // $("body").append(pHtml);
+            let oStr = `addhotspot(newspot1);
+                 set(hotspot[newspot1].url, url);
+                 set(hotspot[newspot1].atv, 0);
+                 set(hotspot[newspot1].ath, 0);
+                 set(hotspot[newspot1].scale, 0.7);
+                 set(hotspot[newspot1].zoom, true);
+                 set(hotspot[newspot1].ondown, draghotspot());
+                 set(hotspot[newspot1].onup, log());
+                 );`;
+            let str = `addlayer(newspot1);
+                 set(layer[newspot1].url, base64-${url});
+                 set(layer[newspot1].x, 0);
+                 set(layer[newspot1].y, 0);
+                 set(layer[newspot1].ondown, draghotspot());
+                 set(layer[newspot1].onup, log());
+                 );`;
+
+            krp(str)
+
+        });
+    }
+    //切换场景
+    function toggleScene(sceneIndex) {
+        // scene0
+        $('#scene' + sceneIndex).attr('class', 'tab-item active')
+        $('#scene' + sceneIndex).siblings().attr('class', 'tab-item')
+        loadScene(sceneIndex);
+    }
+
+    function toggleTab(tabID) {
+        $('#' + tabID).attr('class', 'tab-item tab-current')
+        $('#' + tabID).siblings().attr('class', 'tab-item')
+        $('#' + tabID + 'Body').show();
+        $('#' + tabID + 'Body').siblings().hide();
+    }
+
+    function loadScene(sceneIndex) {
+        let oStr = `loadscene(${sceneNameArr[sceneIndex]}, OPENBLEND(0.9, 0.0, 0.8, 0.9, easeOutQuad)`
+        krp(oStr);
+    }
+
+    function log() {
+        let oArr = Array.from(arguments);
+        oArr.forEach((item, i) => {
+            console.log(item);
+        })
+    }
+
+    vmode = "editable";
+    vIndex = 2;
+
+    krp(`check_mode()`);
+    krp('startup(' + vIndex + ')');
+
+    // document.querySelector('.a').onclick = function () {
+    //   krpano.call(`loadscene('scene_yard1', OPENBLEND(0.9, 0.0, 0.8, 0.9, easeOutQuad)`);
+    // }
+    // var str = "";
+
+    // document.querySelector('.b').onclick = function () {
+    //   if (krpano.get(`hotspot[newspot]`)) {
+    //     str = `set(hotspot[newspot].ath, 20);
+    //             set(hotspot[newspot].atv, 20);`
+    //   } else {
+    //     str = `addhotspot(newspot);
+    //             set(hotspot[newspot].url, tt.png);
+    //             set(hotspot[newspot].atv, 0);
+    //             set(hotspot[newspot].ath, 0);
+    //             set(hotspot[newspot].scale, 0.7);
+    //             set(hotspot[newspot].zoom, true);
+    //             set(hotspot[newspot].ondown, draghotspot());
+    //             set(hotspot[newspot].onup, log());
+    //             );`
+    //   }
+    //   krp(str)
+    // }
+    function toggleMode() {
+        vmode = vmode == 'editable' ? 'visible' : 'editable';
+        debugger;
+        krp(`check_mode()`)
+    }
+    krp(`js(log(get(scene[scene_snow].test)))`)
+</script>
